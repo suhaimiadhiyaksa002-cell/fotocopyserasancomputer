@@ -1,0 +1,66 @@
+/* Hero Carousel */
+.carousel-item {
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.carousel-caption {
+  bottom: 40%;
+}
+.carousel-caption h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.carousel-caption p {
+  font-size: 1.2rem;
+}
+
+/* Tombol WhatsApp Floating */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Dark Mode Style */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .navbar {
+  background-color: #1f1f1f !important;
+}
+body.dark-mode .nav-link {
+  color: #e0e0e0 !important;
+}
+body.dark-mode .service-card {
+  background-color: #1f1f1f;
+  border-color: #333;
+  color: #e0e0e0;
+}
+body.dark-mode .cta {
+  background: linear-gradient(90deg, #0d6efd, #20c997);
+}
+body.dark-mode footer {
+  background-color: #1f1f1f !important;
+  color: #aaa;
+}

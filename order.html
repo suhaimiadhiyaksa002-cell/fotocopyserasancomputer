@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pesan Online Serasan Computer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #25d366, #128C7E);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .form-container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
+      width: 420px;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #128C7E;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .form-container input,
+    .form-container textarea,
+    .form-container button {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    .form-container input:focus,
+    .form-container textarea:focus {
+      border-color: #25d366;
+      outline: none;
+      box-shadow: 0px 0px 6px rgba(37, 211, 102, 0.6);
+    }
+    .form-container button {
+      background: #25d366;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+    .form-container button:hover {
+      background: #128C7E;
+      transform: scale(1.05);
+    }
+    .footer {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #555;
+    }
+    .footer span {
+      color: #128C7E;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>📑 Form Pesanan Online</h2>
+    <form id="orderForm">
+      <input type="text" id="nama" placeholder="👤 Nama Anda" required>
+      <input type="text" id="layanan" placeholder="🖨️ Layanan (Cetak, Print, Jilid...)" required>
+      <input type="number" id="jumlah" placeholder="📦 Jumlah" required>
+      <textarea id="catatan" placeholder="📝 Catatan Tambahan"></textarea>
+      <button type="submit">🚀 Kirim via WhatsApp</button>
+    </form>
+    <div class="footer">Serasan Computer © <span>Rimbo Bujang</span></div>
+  </div>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Nomor WhatsApp Admin (format internasional tanpa 0)
+      var adminNumber = "6285381753907";  
+
+      var nama = document.getElementById("nama").value;
+      var layanan = document.getElementById("layanan").value;
+      var jumlah = document.getElementById("jumlah").value;
+      var catatan = document.getElementById("catatan").value;
+
+      var message = 
+        "Halo Admin Serasan Computer,%0A" +
+        "Saya ingin memesan:%0A" +
+        "👤 Nama: " + nama + "%0A" +
+        "🖨️ Layanan: " + layanan + "%0A" +
+        "📦 Jumlah: " + jumlah + "%0A" +
+        "📝 Catatan: " + catatan;
+
+      var url = "https://wa.me/" + adminNumber + "?text=" + message;
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
