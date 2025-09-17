@@ -1,144 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serasan Computer - Photocopy & Print</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Serasan Computer - Photocopy & Print Rimbo Bujang</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css"> <!-- Panggil CSS eksternal -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
+    
+    /* Navbar */
+    .navbar { transition: all 0.3s; }
+    .navbar.sticky { background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .navbar .nav-link.active { font-weight: 600; color: #0d6efd !important; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(13,110,253,0.6), rgba(32,201,151,0.6)), url('https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; }
+    .hero .hero-content { position: relative; z-index: 1; }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #0d6efd, #20c997);
+      border: none;
+      transition: transform 0.3s;
+    }
+    .btn-primary:hover { transform: scale(1.05); }
+
+    /* Services */
+    .services-section { background: #f0f8ff; padding: 60px 0; }
+    .service-card { 
+      min-height: 180px; 
+      border-radius: 12px; 
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: none;
+      background: linear-gradient(135deg, #ffffff, #e0f7fa);
+    }
+    .service-card:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15); 
+    }
+    .service-card i { font-size: 2.5rem; margin-bottom: 15px; color: #0d6efd; }
+
+    /* Statistik Section */
+    .stat-section { background: #fff3e0; padding: 60px 0; }
+
+    /* Footer */
+    footer { background: #0d6efd; color: #fff; }
+    footer a { color: #ffc107; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    footer .social i { transition: transform 0.3s; }
+    footer .social i:hover { transform: scale(1.2); color: #fff; }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
     <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="index.html">
-        <i class="fa-solid fa-print"></i> Serasan Computer
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand fw-bold" href="index.html">Serasan Computer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Beranda</a></li>
-          <li class="nav-item"><a class="nav-link" href="layanan.html">Layanan</a></li>
-          <li class="nav-item"><a class="nav-link" href="order.html">Pesan Online</a></li>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="layanan.html">Layanan & Harga</a></li>
+          <li class="nav-item"><a class="nav-link" href="order.html">Pemesanan</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
-          <!-- Dark Mode Toggle -->
-          <li class="nav-item ms-lg-3">
-            <button id="darkToggle" class="btn btn-outline-secondary btn-sm">
-              <i class="fa-solid fa-moon"></i>
-            </button>
-          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Carousel -->
-  <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/1600x900/?printer,office');">
-        <div class="carousel-caption text-white">
-          <h1>Solusi Cepat & Murah</h1>
-          <p>Layanan fotocopy, print, jilid dengan hasil terbaik</p>
-          <a href="order.html" class="btn btn-primary btn-lg mt-3"><i class="fa-solid fa-cart-shopping"></i> Pesan Sekarang</a>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/1600x900/?printing,document');">
-        <div class="carousel-caption text-white">
-          <h1>Kualitas Terbaik</h1>
-          <p>Dokumen rapi, jelas, dan siap digunakan</p>
-          <a href="layanan.html" class="btn btn-success btn-lg mt-3"><i class="fa-solid fa-list"></i> Lihat Layanan</a>
-        </div>
-      </div>
-      <div class="carousel-item" style="background-image: url('https://source.unsplash.com/1600x900/?books,library');">
-        <div class="carousel-caption text-white">
-          <h1>Cetak & Jilid Profesional</h1>
-          <p>Cocok untuk skripsi, laporan, atau arsip penting Anda</p>
-          <a href="contact.html" class="btn btn-danger btn-lg mt-3"><i class="fa-solid fa-phone"></i> Hubungi Kami</a>
-        </div>
-      </div>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container text-center hero-content">
+      <h1 class="display-4 fw-bold">Serasan Computer</h1>
+      <p class="lead mb-4">Photocopy, Print & Jasa Desain Cepat, Murah, dan Terpercaya di Rimbo Bujang</p>
+      <a href="order.html" class="btn btn-primary btn-lg">Pesan Sekarang <i class="fas fa-paper-plane ms-2"></i></a>
     </div>
-    <!-- Kontrol -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
+  </header>
 
-  <!-- Services -->
-  <section class="py-5">
+  <!-- Main Content -->
+  <main class="py-5">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Layanan Kami</h2>
-        <p class="text-muted">Berbagai layanan untuk memenuhi kebutuhan percetakan Anda</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="zoom-in">
-          <div class="card service-card h-100 text-center p-4">
-            <i class="fa-solid fa-copy fa-3x text-primary mb-3"></i>
-            <h5>Fotocopy</h5>
-            <p>Cetak hitam putih & berwarna dengan hasil yang jelas dan rapi.</p>
-          </div>
+      <!-- Tentang Kami -->
+      <section class="row mb-5 align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <h3 class="mb-3 text-primary">Tentang Kami</h3>
+          <p>Serasan Computer menyediakan layanan fotocopy, print warna & hitam-putih, jilid, laminating, dan jasa desain sederhana. Kami melayani pelajar, mahasiswa, dan kantor di sekitar Rimbo Bujang dengan pelayanan cepat, hasil berkualitas, dan harga terjangkau.</p>
         </div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
-          <div class="card service-card h-100 text-center p-4">
-            <i class="fa-solid fa-print fa-3x text-success mb-3"></i>
-            <h5>Print</h5>
-            <p>Layanan print dokumen, foto, dan tugas kuliah dengan kualitas terbaik.</p>
-          </div>
+        <div class="col-md-6">
+          <h3 class="mb-3 text-success">Jam Operasional</h3>
+          <ul class="list-group">
+            <li class="list-group-item"><i class="fas fa-clock me-2 text-primary"></i>Senin - Sabtu: 08.00 - 18.00</li>
+            <li class="list-group-item"><i class="fas fa-clock me-2 text-danger"></i>Minggu: Libur</li>
+          </ul>
         </div>
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-          <div class="card service-card h-100 text-center p-4">
-            <i class="fa-solid fa-book fa-3x text-danger mb-3"></i>
-            <h5>Jilid</h5>
-            <p>Jilid cepat, kuat, dan rapi untuk skripsi, laporan, dan dokumen penting.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- CTA -->
-  <section class="cta text-white text-center py-5 bg-primary">
-    <div class="container" data-aos="fade-up">
-      <h2 class="fw-bold">Butuh Cetak Dokumen Sekarang?</h2>
-      <p class="mb-4">Pesan online dengan mudah, dokumen siap saat Anda datang!</p>
-      <a href="order.html" class="btn btn-light btn-lg"><i class="fa-solid fa-bolt"></i> Mulai Pesan</a>
+      <!-- Layanan Unggulan -->
+      <section class="services-section">
+        <h3 class="mb-4 text-center text-primary fw-bold">Layanan Unggulan</h3>
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="card service-card p-4 text-center">
+              <i class="fas fa-copy text-warning"></i>
+              <h5 class="mt-2">Fotocopy B/W</h5>
+              <p class="text-muted">Rp 300/lembar</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card service-card p-4 text-center">
+              <i class="fas fa-print text-danger"></i>
+              <h5 class="mt-2">Print Warna</h5>
+              <p class="text-muted">Rp 2.500/lembar</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card service-card p-4 text-center">
+              <i class="fas fa-book text-success"></i>
+              <h5 class="mt-2">Jilid</h5>
+              <p class="text-muted">Mulai Rp 4.000</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card service-card p-4 text-center">
+              <i class="fas fa-id-card text-info"></i>
+              <h5 class="mt-2">Laminating</h5>
+              <p class="text-muted">Rp 5.000/lembar</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistik Pengunjung -->
+      <section class="stat-section my-5">
+        <h3 class="mb-4 text-center text-primary fw-bold">Statistik Pengunjung</h3>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card p-4 shadow-sm">
+              <canvas id="visitorChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center mt-5">
+        <a href="layanan.html" class="btn btn-outline-primary btn-lg">Lihat Semua Layanan & Harga</a>
+      </div>
     </div>
-  </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="py-4 bg-light text-center">
-    <p class="mb-0">&copy; 2025 Serasan Computer Rimbo Bujang. All Rights Reserved.</p>
+  <footer class="py-5 mt-5 text-center">
+    <div class="container">
+      <p class="mb-1 fw-bold">Serasan Computer — Rimbo Bujang</p>
+      <p class="mb-2">Kontak: <a href="https://wa.me/628123456789">0812-3456-789</a> | Alamat: Jl. Contoh No.1, Rimbo Bujang</p>
+      <div class="social">
+        <a href="#" class="me-3"><i class="fab fa-facebook fa-lg"></i></a>
+        <a href="#" class="me-3"><i class="fab fa-instagram fa-lg"></i></a>
+        <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
+      </div>
+      <small class="d-block mt-3">© 2025 Serasan Computer. All Rights Reserved.</small>
+    </div>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/6285381753907" target="_blank" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
+    window.addEventListener('scroll', function() {
+      document.querySelector('nav').classList.toggle('sticky', window.scrollY > 50);
+    });
 
-    // Dark Mode Toggle
-    const toggle = document.getElementById('darkToggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const icon = toggle.querySelector('i');
-      if (document.body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+    // Chart.js Statistik Pengunjung
+    const ctx = document.getElementById('visitorChart').getContext('2d');
+    const visitorChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+        datasets: [{
+          label: 'Jumlah Pengunjung',
+          data: [120, 150, 180, 170, 200, 220, 210, 190, 230, 250, 240, 260],
+          backgroundColor: [
+            '#0d6efd', '#20c997', '#ffc107', '#fd7e14',
+            '#6f42c1', '#dc3545', '#0dcaf0', '#198754',
+            '#6610f2', '#d63384', '#fd7e14', '#0d6efd'
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: 'Jumlah Pengunjung' } },
+          x: { title: { display: true, text: 'Bulan' } }
+        }
       }
     });
   </script>
