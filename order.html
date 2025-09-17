@@ -1,121 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Pesan Online Serasan Computer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pemesanan - Serasan Computer</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #25d366, #128C7E);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .form-container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.2);
-      width: 420px;
-      animation: fadeIn 1s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .form-container h2 {
-      margin-bottom: 20px;
-      color: #128C7E;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .form-container input,
-    .form-container textarea,
-    .form-container button {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
-    .form-container input:focus,
-    .form-container textarea:focus {
-      border-color: #25d366;
-      outline: none;
-      box-shadow: 0px 0px 6px rgba(37, 211, 102, 0.6);
-    }
-    .form-container button {
-      background: #25d366;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 16px;
-      letter-spacing: 1px;
-      transition: 0.3s;
-    }
-    .form-container button:hover {
-      background: #128C7E;
-      transform: scale(1.05);
-    }
-    .footer {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 13px;
-      color: #555;
-    }
-    .footer span {
-      color: #128C7E;
-      font-weight: bold;
-    }
+    body { font-family: 'Segoe UI', sans-serif; }
+    .navbar .nav-link.active { font-weight: 600; color: #0d6efd !important; }
+    footer { background: #f8f9fa; }
   </style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>📑 Form Pesanan Online</h2>
-    <form id="orderForm">
-      <input type="text" id="nama" placeholder="👤 Nama Anda" required>
-      <input type="text" id="layanan" placeholder="🖨️ Layanan (Cetak, Print, Jilid...)" required>
-      <input type="number" id="jumlah" placeholder="📦 Jumlah" required>
-      <textarea id="catatan" placeholder="📝 Catatan Tambahan"></textarea>
-      <button type="submit">🚀 Kirim via WhatsApp</button>
-    </form>
-    <div class="footer">Serasan Computer © <span>Rimbo Bujang</span></div>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm py-3">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Serasan Computer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="layanan.html">Layanan & Harga</a></li>
+          <li class="nav-item"><a class="nav-link active" href="order.html">Pemesanan</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <script>
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+  <main class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Form Pemesanan Online</h2>
+      <p class="text-center text-muted mb-5">Isi form berikut, admin akan menghubungi Anda melalui WhatsApp.</p>
+
+      <form id="orderForm" class="mx-auto" style="max-width:600px;">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama</label>
+          <input type="text" id="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">No. Whatsapp</label>
+          <input type="tel" id="phone" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="service" class="form-label">Pilih Layanan</label>
+          <select id="service" class="form-select">
+            <option value="Fotocopy Hitam-Putih">Fotocopy Hitam-Putih</option>
+            <option value="Print Warna">Print Warna</option>
+            <option value="Jilid">Jilid</option>
+            <option value="Laminating">Laminating</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Jumlah</label>
+          <input type="number" id="quantity" class="form-control" value="1" min="1">
+        </div>
+        <div class="mb-3">
+          <label for="file" class="form-label">Upload File (PDF / JPG)</label>
+          <input type="file" id="file" class="form-control" accept="application/pdf,image/*">
+          <small class="text-muted">Setelah klik "Kirim Pesanan", silakan unggah file ini di WhatsApp yang terbuka.</small>
+        </div>
+        <div class="mb-3">
+          <label for="note" class="form-label">Keterangan</label>
+          <textarea id="note" class="form-control" rows="3"></textarea>
+        </div>
       
-      // Nomor WhatsApp Admin (format internasional tanpa 0)
-      var adminNumber = "6285381753907";  
-
-      var nama = document.getElementById("nama").value;
-      var layanan = document.getElementById("layanan").value;
-      var jumlah = document.getElementById("jumlah").value;
-      var catatan = document.getElementById("catatan").value;
-
-      var message = 
-        "Halo Admin Serasan Computer,%0A" +
-        "Saya ingin memesan:%0A" +
-        "👤 Nama: " + nama + "%0A" +
-        "🖨️ Layanan: " + layanan + "%0A" +
-        "📦 Jumlah: " + jumlah + "%0A" +
-        "📝 Catatan: " + catatan;
-
-      var url = "https://wa.me/" + adminNumber + "?text=" + message;
-
-      window.open(url, "_blank");
-    });
-  </script>
+        <button type="submit" class="btn btn-success w-100">Kirim Pesanan <i class="fas fa-paper-plane ms-2"></i></button>
+      </form>
+      
+      <script>
+      document.getElementById('orderForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = encodeURIComponent(document.getElementById('name').value);
+        const phone = encodeURIComponent(document.getElementById('phone').value);
+        const service = encodeURIComponent(document.getElementById('service').value);
+        const quantity = encodeURIComponent(document.getElementById('quantity').value);
+        const note = encodeURIComponent(document.getElementById('note').value);
+      
+        const adminWA = "628123456789"; 
+        const text = `Halo Admin Serasan Computer,%0ANama: ${name}%0ANo. WA: ${phone}%0ALayanan: ${service}%0AJumlah: ${quantity}%0AKeterangan: ${note}%0A*Silakan upload file di sini jika ada.*`;
+        const waLink = `https://wa.me/${adminWA}?text=${text}`;
+        window.open(waLink, "_blank");
+      });
+      </script>
+      
 </body>
 </html>
